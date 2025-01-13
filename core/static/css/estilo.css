@@ -1,0 +1,130 @@
+/* Hero */
+.hero {
+    height: 100vh; /* Define a altura como a altura total da janela */
+    background-image: url("../imagens/doce.jpg"); /* Caminho para a imagem */
+    background-size: cover; /* Faz a imagem cobrir todo o hero */
+    background-position: center; /* Centraliza a imagem */
+    display: flex; /* Usado para alinhar conteúdo no centro */
+    align-items: center; /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    color: rgb(121, 62, 62); /* Cor do texto */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Sombra no texto para contraste */
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3rem; /* Tamanho grande para o título */
+    margin: 0;
+}
+.hero p {
+    font-size: 1.2rem; /* Texto secundário */
+}
+
+/* Estilos gerais */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5d2d2;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Conteúdo principal */
+.conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Imagem principal */
+
+
+/* Caixa de descrição */
+.caixa {
+    flex: 1 1 55%;
+}
+
+.caixa h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.caixa p {
+    line-height: 1.6;
+}
+
+/* Formulário de cadastro */
+.cadastro {
+    margin-top: 10%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+    .conteudo {
+        flex-direction: column; /* Empilha os elementos */
+        padding: 20px;
+    }
+
+   .caixa {
+        width: 100%;
+    }
+}
+
+.button:hover {
+    background-color: #026d0d;
+}
+    
+    /* Estilo do Popup */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo
+    semitransparente */
+}
+    
+.modal-content {
+    
+    background-color: #fefefe; /* Cor de fundo do popup */
+    margin: 15% auto; /* Centraliza verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Largura do popup */
+    max-width: 500px; /* Largura máxima */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para
+    dar profundidade */
+    animation: fadeIn 0.3s; /* Animação de entrada */
+}
+    
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+    
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+    
+    /* Animação de fade in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    
+    to { opacity: 1; }
+}
