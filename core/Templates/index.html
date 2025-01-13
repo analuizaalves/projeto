@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Curso de Confeitaria</title>
+</head>
+<body>
+    <!-- Hero -->
+    <div class="hero">
+        <div>
+            <h1>Bem-vindo ao Curso de Confeitaria</h1>
+            <p>Aprenda receitas incríveis e transforme sua paixão em profissão!</p>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="conteudo">
+
+        <!-- Caixa de descrição -->
+        <div class="caixa">
+            <h1>Curso de Confeitaria</h1>
+            <p>
+                Aqui oferecemos receitas para começar seu negócio. Nesse curso temos:
+                Aprenda a arte da confeitaria com nosso curso intensivo!
+                <br><br>
+                <strong>Vantagens:</strong>
+                <br>1. Aprenda técnicas exclusivas de confeitaria.
+                <br>2. Desenvolva habilidades criativas e inovadoras.
+                <br>3. Acesso a materiais e equipamentos profissionais.
+                <br><br>
+                <strong>Produtos que você aprenderá a fazer:</strong>
+                <br>1. Bolos decorados.
+                <br>2. Doces finos.
+                <br>3. Cupcakes personalizados.
+                <br>4. Pastéis artísticos.
+                <br>5. Sobremesas gourmet.
+                <br><br>
+                <strong>Informações adicionais:</strong>
+                <br>Duração: 20 horas
+                <br>Investimento: R$ 600,00
+                <br>Certificado: Sim
+                <br>Contate-nos: 4002 8922 | confeitariadaLueMi@email.com
+            </p>
+        </div>
+
+        <!-- Formulário de cadastro -->
+        <div class="cadastro">
+            <h3>Faça seu cadastro aqui:</h3>
+
+            <!-- Modal para mensagens -->
+            <div id="messageModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div id="modalMessage"></div>
+                </div>
+            </div>
+
+            <!-- Formulário -->
+            <form method="post" action="{% url 'index' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showModal(message, isSuccess) {
+            var modal = document.getElementById("messageModal");
+            var modalMessage = document.getElementById("modalMessage");
+            modalMessage.innerHTML = message;
+            modal.style.display = "block";
+            modal.style.backgroundColor = isSuccess ? "#d4edda" : "#f8d7da";
+        }
+
+        document.querySelector(".close").onclick = function () {
+            document.getElementById("messageModal").style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById("messageModal")) {
+                document.getElementById("messageModal").style.display = "none";
+            }
+        };
+
+        {% if messages %}
+        {% for message in messages %}
+        showModal("{{ message }}", "{{ message.tags }}" == "success");
+        {% endfor %}
+        {% endif %}
+    </script>
+    
+</body>
+</html>
